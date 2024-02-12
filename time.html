@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html style="background: coral;">
+
+<head>
+    <title>
+        Time
+    </title>
+    <script>
+
+        function currentTime() {
+            let date = new Date();
+            let hh = date.getHours();
+            let mm = date.getMinutes();
+            let ss = date.getSeconds();
+            let currentDate=date.getDate()
+            let currentMonth=date.getMonth();
+            let currentyear=date.getFullYear();
+            let session = "AM";
+            let greeting = "GoodMorning!";
+            if (hh == 0) {
+                hh = 12;
+                greeting = "Good Night!"
+            }
+
+            if (hh > 12) {
+                hh = hh - 12;
+                session = "PM";
+                if (hh > 12 && hh <= 6) {
+                    greeting = "Good Afternoon!"
+                }
+                else if (hh > 6) {
+                    greeting = "Good Night!"
+                }
+            }
+
+            hh = (hh < 10) ? "0" + hh : hh;
+            mm = (mm < 10) ? "0" + mm : mm;
+            ss = (ss < 10) ? "0" + ss : ss;
+
+            let time = hh + ":" + mm + ":" + ss + " " + session;
+
+            document.getElementById("clock").innerText = time;
+            document.getElementById("greet").innerText = greeting;
+            document.getElementById("date").innerText = currentDate+"-"+currentMonth+"-"+currentyear;
+            let t = setTimeout(function () { currentTime() }, 1000);
+        }
+
+    </script>
+
+<body onload="currentTime()">
+    <p id="greet" style="font-weight: bold;font-size:  xx-large;text-align: center;"></p>
+    <p id="clock" style="font-weight: bold;font-size: x-large¸;text-align: center;"></p>
+    <p id="date" style="font-weight: bold;font-size:xx-large;text-align: center;"></p>
+
+</body>
+
+
+</html>
